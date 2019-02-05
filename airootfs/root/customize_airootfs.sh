@@ -26,7 +26,8 @@ sed -i 's/#\(HandleLidSwitch=\)suspend/\1ignore/' /etc/systemd/logind.conf
 
 # Services
 systemctl enable NetworkManager
-systemctl enable pacman-init.service choose-mirror.service
+systemctl enable pacman-init.service
+systemctl enable choose-mirror.service
 systemctl enable sysresccd-autorun.service
 systemctl set-default multi-user.target
 
