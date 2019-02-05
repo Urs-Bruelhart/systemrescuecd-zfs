@@ -211,8 +211,6 @@ make_prepare() {
 
 # Build ISO
 make_iso() {
-    chmod 755 ${work_dir}/iso/autorun0
-
     cp ${version_file} ${work_dir}/iso/${install_dir}/
     mkarchiso ${verbose} -w "${work_dir}" -D "${install_dir}" -L "${iso_label}" -P "${iso_publisher}" -A "${iso_application}" -o "${out_dir}" iso "${iso_name}-${iso_version}.iso"
 }
