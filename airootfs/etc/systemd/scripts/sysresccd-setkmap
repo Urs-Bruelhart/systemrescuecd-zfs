@@ -1,0 +1,19 @@
+#!/bin/sh
+# Process setkmap option if it was passed on the boot command line in order to
+# configure the keyboard layout on the system
+
+logfile="/var/log/sysresccd-setkmap.log"
+echo "$(date +%Y%m%d-%H%M%S) $0 Starting ..." > ${logfile}
+
+for curopt in $(cat /proc/cmdline)
+do
+    case "${curopt}" in
+    setkmap\=*)
+        echo "Found option '${curopt}' in the boot command line" >> ${logfile}
+        SETKMAP=$(echo "${curopt}" | cut -f2 -d=)
+        /sbin/loadkeys ${SETKMAP}
+        mkdir -p /etc/sysconfig
+        echo "XKEYBOARD=${SETKMAP}" > /etc/sysconfig/keyboard
+        ;;
+    esac
+done
