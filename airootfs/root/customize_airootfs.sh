@@ -8,8 +8,12 @@ locale-gen
 ln -sf /usr/share/zoneinfo/UTC /etc/localtime
 
 cp -aT /etc/skel/ /root/
+
+# Permissions
 chmod 700 /root
 chown root:root /root -R
+chmod 755 /etc/systemd/scripts/sysresccd-*
+chown root:root /etc/systemd/scripts/sysresccd-*
 
 # Configuration
 sed -i 's/#\(PermitRootLogin \).\+/\1yes/' /etc/ssh/sshd_config
@@ -23,6 +27,7 @@ sed -i 's/#\(HandleLidSwitch=\)suspend/\1ignore/' /etc/systemd/logind.conf
 # Services
 systemctl enable NetworkManager
 systemctl enable pacman-init.service choose-mirror.service
+systemctl enable sysresccd-autorun.service
 systemctl set-default multi-user.target
 
 # Cleanup
