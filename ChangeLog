@@ -6,6 +6,7 @@ SystemRescueCd ChangeLog
 -------------------------------------------------------------------------------
 * Reintroduced autorun service to run scripts automatically at boot time
 * Changed filesystem label so it fits in FAT filesystem labels for UEFI booting
+* Enabled sshd service and re-introduced support for option rootpass=xxxx
 
 -------------------------------------------------------------------------------
 6.0.0 (2019-02-02):
