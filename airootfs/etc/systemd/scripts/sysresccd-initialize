@@ -1,0 +1,29 @@
+#!/bin/sh
+logfile="/var/log/sysresccd-initialize.log"
+echo "$(date +%Y%m%d-%H%M%S) $0 Starting ..." > ${logfile}
+
+# Set a random root password by default
+SSHPASS1=$(openssl rand -base64 32)
+echo "root:${SSHPASS1}" | chpasswd > /dev/null 2>&1
+
+# Process options passed on the boot command line
+for curopt in $(cat /proc/cmdline)
+do
+    case "${curopt}" in
+      # Configure keyboard layout if requested in the boot command line
+      setkmap\=*)
+          echo "Found option '${curopt}' in the boot command line" >> ${logfile}
+          SETKMAP=$(echo "${curopt}" | cut -f2 -d=)
+          /sbin/loadkeys ${SETKMAP}
+          mkdir -p /etc/sysconfig
+          echo "XKEYBOARD=${SETKMAP}" > /etc/sysconfig/keyboard
+          ;;
+      # Set the system root password and allow root login
+      rootpass\=*)
+          echo "Found option 'rootpass=******' in the boot command line" >> ${logfile}
+          SSHPASS2=$(echo "${curopt}" | cut -f2 -d=)
+          echo "root:${SSHPASS2}" | chpasswd > /dev/null 2>&1
+          sed -i 's/\(PermitRootLogin \).\+/\1yes/' /etc/ssh/sshd_config
+          ;;
+    esac
+done
