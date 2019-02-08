@@ -23,7 +23,6 @@ do
           echo "Found option 'rootpass=******' in the boot command line" >> ${logfile}
           SSHPASS2=$(echo "${curopt}" | cut -f2 -d=)
           echo "root:${SSHPASS2}" | chpasswd > /dev/null 2>&1
-          sed -i 's/\(PermitRootLogin \).\+/\1yes/' /etc/ssh/sshd_config
           ;;
     esac
 done
