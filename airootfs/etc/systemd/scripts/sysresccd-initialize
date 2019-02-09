@@ -2,10 +2,6 @@
 echo "$0 Starting ..."
 errcnt=0
 
-# Set a random root password by default
-SSHPASS0=$(openssl rand -base64 32)
-echo "root:${SSHPASS0}" | chpasswd || echo "Failed to set a default random root password"
-
 # Process options passed on the boot command line
 for curopt in $(cat /proc/cmdline)
 do
