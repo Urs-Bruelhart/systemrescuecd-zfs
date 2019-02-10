@@ -37,6 +37,9 @@ systemctl set-default multi-user.target
 # Cleanup
 find /usr/lib -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
 
+# Update pacman.conf
+sed -i -e '/# ==== BEGIN customrepos ====/,/# ==== END customrepos ====/d' /etc/pacman.conf
+
 # Fix desktop
 sed -i -e 's!Exec=notepadqq!Exec=notepadqq --allow-root!g' /usr/share/applications/notepadqq.desktop
 
