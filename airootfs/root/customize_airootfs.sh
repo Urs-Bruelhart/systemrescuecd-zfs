@@ -12,8 +12,10 @@ cp -aT /etc/skel/ /root/
 # Permissions
 chmod 700 /root
 chown root:root /root -R
-chmod 755 /etc/systemd/scripts/sysresccd-*
-chown root:root /etc/systemd/scripts/sysresccd-*
+chmod 755 /etc/systemd/scripts/*
+chown root:root /etc/systemd -R
+chown root:root /etc/modprobe.d -R
+chown root:root /etc/{fstab,hostname}
 
 # Configuration
 sed -i 's/#\(PermitRootLogin \).\+/\1yes\nAllowUsers root/' /etc/ssh/sshd_config
