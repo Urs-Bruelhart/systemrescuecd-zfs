@@ -84,6 +84,7 @@ screen
 sdparm
 sg3_utils
 smartmontools
+strace
 sudo
 sysstat
 tcpdump
