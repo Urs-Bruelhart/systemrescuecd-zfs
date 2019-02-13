@@ -119,5 +119,6 @@ xorg-server
 xorg-xinit
 yubikey-manager-qt
 yubikey-personalization-gui
+zerofree
 zile
 zip
