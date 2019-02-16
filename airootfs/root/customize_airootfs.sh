@@ -49,5 +49,5 @@ sed -i -e 's!Exec=notepadqq!Exec=notepadqq --allow-root!g' /usr/share/applicatio
 /usr/bin/updatedb
 
 # Packages
-pacman -Qe > /root/packages-list.txt
+pacman -Q > /root/packages-list.txt
 pacman -Qi | egrep '^(Name|Installed)' | cut -f2 -d':' | paste - - | column -t | sort -nrk 2 | grep MiB > /root/packages-size.txt
