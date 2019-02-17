@@ -42,9 +42,6 @@ find /usr/lib -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -del
 # Update pacman.conf
 sed -i -e '/# ==== BEGIN customrepos ====/,/# ==== END customrepos ====/d' /etc/pacman.conf
 
-# Fix desktop
-sed -i -e 's!Exec=notepadqq!Exec=notepadqq --allow-root!g' /usr/share/applications/notepadqq.desktop
-
 # Customizations
 /usr/bin/updatedb
 
