@@ -1,6 +1,7 @@
 arch-install-scripts
 atop
 b43-fwcutter
+borg
 btrfs-progs
 chntpw
 cifs-utils
