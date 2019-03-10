@@ -5,7 +5,7 @@ SystemRescueCd ChangeLog
 6.0.3:
 -------------------------------------------------------------------------------
 * Updated kernel to Long-Term-Supported linux-4.19.27
-* Added packages: growpart
+* Added packages: growpart, grsync
 
 -------------------------------------------------------------------------------
 6.0.2 (2019-02-21):

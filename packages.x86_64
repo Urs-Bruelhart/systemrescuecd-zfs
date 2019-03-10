@@ -32,6 +32,7 @@ gpm
 gptfdisk
 grml-zsh-config
 growpart
+grsync
 grub
 hdparm
 htop
