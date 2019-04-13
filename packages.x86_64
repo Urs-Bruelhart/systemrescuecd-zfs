@@ -106,7 +106,6 @@ wipe
 wget
 wireless-regdb
 wireless_tools
-wpa_actiond
 wvdial
 xarchiver
 xfce4
